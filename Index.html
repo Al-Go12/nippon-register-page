@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>பரிசு பதிவு</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: url('./bg.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-wrapper {
+      width: 100%;
+      text-align: center;
+      margin-top: 25px;
+      z-index: 200;
+    }
+
+    .logo-center {
+      width: 260px;
+      max-width: 80vw;
+      height: auto;
+      filter: drop-shadow(0 4px 14px rgba(0,0,0,0.25));
+    }
+
+    .main-wrapper {
+      width: 100%;
+      max-width: 700px;
+      padding: 10px 15px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .center-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 28px;
+      width: 100%;
+      max-width: 520px;
+      padding: 2.3rem 2.1rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    .form-title {
+      text-align: center;
+      margin-bottom: 1.4rem;
+      color: #0033A0;
+      font-weight: 800;
+      font-size: 1.7rem;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.85);
+    }
+
+    .form-label {
+      font-weight: 700;
+      color: #0033A0;
+      margin-bottom: 0.5rem;
+      font-size: 0.98rem;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.7);
+    }
+
+    .form-control {
+      background: rgba(255,255,255,0.92);
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.28);
+      padding: 13px 16px;
+      font-size: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 0.25rem;
+    }
+
+    .register-btn {
+      background: linear-gradient(135deg, #FF8200 0%, #FF6B00 100%);
+      color: #fff;
+      border-radius: 50px;
+      padding: 13px 2rem;
+      font-size: 1.08rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border: none;
+      margin-top: 0.85rem;
+      box-shadow: 0 8px 20px rgba(255,130,0,0.18);
+      transition: all 0.28s;
+    }
+
+    .register-btn:hover, .register-btn:focus {
+      background: linear-gradient(135deg, #e67300 0%, #d85a00 100%);
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .visuals-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 28px;
+      margin-top: 1.2rem;
+    }
+
+    .mascot-img, .spinwheel-img {
+      width: 110px;
+      height: auto;
+      animation: float 3s ease-in-out infinite;
+      display: block;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.11));
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px);}
+      50% { transform: translateY(-9px);}
+    }
+
+    .steps-section {
+      width: 100%;
+      max-width: 520px;
+      padding: 0 5px;
+    }
+
+    .step {
+      color: #0033A0;
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.22);
+      backdrop-filter: blur(14px);
+      border-radius: 16px;
+      padding: 1.05rem 1.0rem;
+      border: 1px solid rgba(255,255,255,0.19);
+      box-shadow: 0 2px 8px rgba(0,51,160,0.08);
+    }
+
+    .step .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.06rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #0033A0 0%, #0041C2 100%);
+      color: #fff;
+      border-radius: 50%;
+      min-width: 2.1em;
+      height: 2.1em;
+      margin-right: 0.85rem;
+      box-shadow: 0 3px 8px rgba(0,51,160,0.17);
+      text-align: center;
+    }
+
+    .step-text {
+      flex: 1;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.44);
+      font-size: 1.01rem;
+      line-height: 1.4;
+    }
+
+    /* Responsive Tweaks */
+    @media (max-width: 480px) {
+      .logo-center {width: 118px;}
+      .center-card {max-width: 94vw; padding: 0.65rem 0.55rem; border-radius: 20px;}
+      .form-title {font-size: 1.14rem;}
+      .steps-section {max-width: 96vw;}
+      .mascot-img, .spinwheel-img {width: 150px;}
+      .visuals-row {gap: 1px;}
+      .step {font-size: 0.82rem; padding: 0.7rem 0.63rem; border-radius: 13px;}
+      .step .num {min-width: 1.4em; height: 1.4em; font-size: 0.82rem;}
+    }
+
+    @media (min-width: 768px) {
+      .logo-center {width: 285px;}
+      .center-card {max-width: 480px; padding: 2.8rem 2.1rem;}
+      .steps-section {max-width: 480px;}
+    }
+
+    @media (min-width: 1024px) {
+      .logo-center {width: 360px;}
+      .center-card {max-width: 520px;}
+      .steps-section {max-width: 520px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Logo -->
+  <div class="logo-wrapper">
+    <img src="https://1000logos.net/wp-content/uploads/2021/06/Nippon-Paint-logo.png" alt="Nippon Paint Logo" class="logo-center">
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-wrapper">
+
+    <!-- Register Form -->
+    <div class="center-card">
+      <h2 class="form-title">பதிவு செய்யுங்கள்</h2>
+      <form autocomplete="off">
+        <div class="mb-3">
+          <label for="name" class="form-label">பெயர் (Name)</label>
+          <input type="text" class="form-control" id="name" placeholder="உங்கள் பெயர்" required>
+        </div>
+        <div class="mb-4">
+          <label for="mobile" class="form-label">மொபைல் எண் (Mobile Number)</label>
+          <input type="tel" pattern="[0-9]*" class="form-control" id="mobile" placeholder="உங்கள் மொபைல் எண்" required maxlength="10" inputmode="numeric">
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn register-btn btn-lg">பதிவு செய்யுங்கள்</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Visuals -->
+    <div class="visuals-row">
+      <img src="./mascout.png" alt="Mascot" class="mascot-img">
+      <img src="./spinwheel.png" alt="Spin Wheel" class="spinwheel-img">
+    </div>
+
+    <!-- Steps -->
+    <div class="steps-section">
+      <div class="step">
+        <span class="num">1</span>
+        <div class="step-text">1000/- மற்றும் அதற்கு மேல் மதிப்புள்ள திப்பான் பெயிண்ட் பொருட்களை வாங்குங்கள்.</div>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <div class="step-text">பண்டிகை கால பரிசுகளை பெற OR குறியீட்டை டீலகிடம் கேளுங்கள்.</div>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <div class="step-text">சக்கரத்தை சுழற்றி அற்புதமான பரிசுகளை வெல்லுங்கள்!</div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
